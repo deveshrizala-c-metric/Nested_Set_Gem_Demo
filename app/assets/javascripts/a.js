@@ -15,6 +15,21 @@ function editFunction(childObj)
     $("#category_edit").modal("hide");
 }
 
+var ready;
+ready = function() {
+  $("#photo_link").on("click", function() {
+     $('#imagepreview').attr('src', $(this).find('img').attr('src')); // here asign the image to the modal when the user click the enlarge link
+     $('#photo_modal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+  });
+
+  $(".pop").on("click", function() {
+     $('#imagepreview').attr('src', $(this).find('img').attr('src')); // here asign the image to the modal when the user click the enlarge link
+     $('#photo_modal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+  });
+}
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
 // $(function(childObj) {
 //   $('#category_edit').on('shown.bs.modal', function (event) {
 //     console.log($(this));

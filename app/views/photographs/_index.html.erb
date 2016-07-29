@@ -1,8 +1,8 @@
 <% @album.photographs.in_groups_of(3) do |group| %>
    <div class="row">
     <% group.compact.each do |photo| %>
-      <div class="col-xs-2">
-        <%= link_to (image_tag photo.img.url, :width => '100%'), "#", data: { remote: "true", toggle: 'modal', target: "#photo_modal"} %>
+      <div class="col-xs-2 pop">
+        <%= image_tag photo.img.url, :width => '100%', :id => 'image_id' %>
       </div>
     <% end %>
   </div>
@@ -24,14 +24,18 @@
 
 </div>
 
-<div id="photo_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+<div id="photo_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-body">
-          <%#= render 'photographs/show', local: { :phototgraph => @photograph }, modal: true %>
+          <img src="" id="imagepreview" style="width: 100%; height: 100%;" >
       </div>
+    </div>
+
+    <div class="modal-footer">
+       <%#= link_to "Previous",@photograph.prev(@photograph)%> <%#= link_to "Next", @photograph.next(@photograph) %>
     </div>
 
   </div>
