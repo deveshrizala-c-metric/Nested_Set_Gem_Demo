@@ -1,0 +1,34 @@
+<ol>
+  <% item.children.each do |child| %>
+    <li id='category_<%=child.id %>' class="mjs-nestedSortable-expanded">
+      <div><span class="disclose"><span></span></span><%= child.name %>
+
+        <span style="float:right">
+          <% if can? :destroy , @category %>
+            <%= link_to "<i class='glyphicon glyphicon-minus'></i>".html_safe , child , method: :delete, data: { confirm: 'Are you sure?', remote: "true" }   %>
+          <%else%>
+            <i class='glyphicon glyphicon-minus'></i>
+          <%end%>
+        </span>
+
+        <span id="cat_child_edit" style="float:right" onclick="editFunction(<%=child.id%>)") >
+          <% if can? :edit , @category %>
+              <%= link_to "<i class='glyphicon glyphicon-pencil'></i>".html_safe , "#", data: { remote: "true", toggle: 'modal', target: "#category_edit" } %>
+          <%else%>
+                  <i class='glyphicon glyphicon-pencil'></i>
+          <%end%>
+        </span>
+
+        <span id="child_create" style="float:right" onclick="createFunction(<%=child.id%>)">
+          <% if can? :create , @category %>
+              <%= link_to "<i class='glyphicon glyphicon-plus'></i>".html_safe, "#", data: { remote: "true", toggle: 'modal', target: "#category_form" } %>
+          <%else%>
+              <i class='glyphicon glyphicon-plus'></i>
+          <%end%>
+        </span>
+
+      </div>
+      <%= render 'shared/children', :item => child unless child.leaf? %>
+    </li>
+  <% end %>
+</ol>

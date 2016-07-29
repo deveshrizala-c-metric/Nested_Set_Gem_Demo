@@ -1,0 +1,60 @@
+<% @categories.each do |category| %>
+  <div class="row">
+    <div class="col-md-2">
+      <%=category.name%>
+    </div>
+    <div class="col-md-2">
+      <%=category.parent_id%>
+    </div>
+    <div class="col-md-2">
+      <%=category.lft%>
+    </div>
+    <div class="col-md-2">
+      <%=category.rgt%>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to category, class: 'btn btn-info' do %>
+        <i class="glyphicon glyphicon-eye-open"></i> Show <%end%>
+
+      <%= link_to "#alert_modal", data: { toggle: 'modal', target: "#alert_modal" }, class: 'btn btn-primary' do %><i class='glyphicon glyphicon-pencil'></i>Edit<%end%>
+
+      <% if cannot? :destroy , @category %>
+          <%= link_to "#alert_modal",  data: { toggle: 'modal', target: "#alert_modal" },  class: 'btn btn-danger' do %><i class="glyphicon glyphicon-remove"></i> Destroy <%end%>
+      <%else%>
+         <%= link_to category, method: :delete, data: { confirm: "Are you sure want to delete?" },  class: 'btn btn-danger' do %><i class="glyphicon glyphicon-remove"></i> Destroy <%end%>
+      <%end%>
+    </div>
+  </div>
+
+  <div class="row">
+    <hr style='background-color:rgb(255,0,0);border-width:0;color:#000000;height:0px;line-height:0;text-align:left;width:100%;'>
+  </div>
+<%end%>
+
+
+<!-- Modal -->
+<div id="alert_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+       <div class="modal-body">
+          <% if (cannot? :edit , @category) || (cannot? :destroy , @category) %>
+              <span>Not allowed to do this action</span>
+          <%end%>
+
+          <% if can? :edit , @category %>
+              <%#= render :action => "edit", modal: true %>
+          <%end%>
+
+      </div>
+
+      <div class="modal-footer">
+        <%= link_to "<i class='glyphicon glyphicon-remove'></i>Cancel".html_safe, "#", class: "btn btn-primary", data: {dismiss: "modal"} %>
+      </div>
+    </div>
+
+  </div>
+</div>

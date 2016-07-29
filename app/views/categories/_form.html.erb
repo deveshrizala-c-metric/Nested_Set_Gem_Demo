@@ -1,0 +1,34 @@
+<%= form_for(@category, remote: true, html: {role: :form, 'data-model' => 'category'}) do |f| %>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-1">
+        <%= f.label :Name %>
+      </div>
+      <div class="col-md-1">
+        <%= f.text_field :name %>
+      </div>
+      <!--  <div class="col-md-8">
+      </div> -->
+      </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-md-2">
+      </div>
+       <div class="col-md-1">
+        <%=f.hidden_field :parent_id, :id => "parent_field", :value => nil %>
+      </div>
+      <!-- <div class="col-md-1">
+        <%#= f.text_field :parent_id %>
+      </div> -->
+    </div>
+  </div>
+  <br>
+   <div class="modal-footer">
+        <%= f.submit class: 'btn btn-success' %>
+       <%= link_to "<i class='glyphicon glyphicon-remove'></i>Cancel".html_safe, "#", class: "btn btn-primary", data: {dismiss: "modal"} %>
+      </div>
+<% end %>

@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h3 align="left"><u>Editing Category</u></h3>
+</div>
+
+<%= form_for(@category, remote: true, html: {role: :form, 'data-model' => 'category', :class => 'edit_category'}) do |f| %>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-1">
+        <%= f.label :Name %>
+      </div>
+      <div class="col-md-1">
+        <%= f.text_field :name, :id => 'cat_name_field' %>
+      </div>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-md-2">
+      </div>
+       <div class="col-md-1">
+      </div>
+      <div class="col-md-1">
+        <div class="actions">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+        <%= f.submit 'Update Category', class: 'btn btn-success' %>
+       <%= link_to "<i class='glyphicon glyphicon-remove'></i>Cancel".html_safe, "#", class: "btn btn-primary", data: {dismiss: "modal"} %>
+    </div>
+<% end %>

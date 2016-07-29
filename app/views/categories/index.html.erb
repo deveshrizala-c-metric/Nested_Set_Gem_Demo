@@ -1,0 +1,43 @@
+<h3><u>Listing Categories</u></h3>
+
+  <div id="content" class="row">
+
+      <div class="row" align="right">
+        <%= link_to home_index_path, class: 'btn btn-primary' do %>
+          <i class="glyphicon glyphicon-home"></i>Home
+        <%end%>
+      </div>
+      <div id="heading" class="row">
+        <div class="col-md-2">
+            <div class="row">
+              <strong>Name</strong>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+              <strong>Parent</strong>
+            </div>
+        </div>
+        <div class="col-md-2">
+          <div class="row">
+              <strong>Left</strong>
+            </div>
+        </div>
+      <div class="col-md-2">
+          <div class="row">
+              <strong>Right</strong>
+            </div>
+      </div>
+        <div class="col-md-4">
+        </div>
+      </div>
+      <div class="row">
+         <hr style='background-color:rgb(255,0,0);border-width:0;color:#000000;height:2px;line-height:0;text-align:left;width:100%;'>
+      </div>
+      <div id="data" class="row">
+          <%= render "index" %>
+      </div>
+      <div class="row">
+        <hr style='background-color:rgb(255,0,0);border-width:0;color:#000000;height:2px;line-height:0;text-align:left;width:100%;'>
+      </div>
+  </div>

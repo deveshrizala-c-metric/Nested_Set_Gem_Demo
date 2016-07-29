@@ -1,0 +1,90 @@
+ <div id="category-sortable">
+    <div class="row">
+      <b>Drag and drop the categories into a nested set then hit save</b>
+    </div>
+    <br>
+    <div class="row">
+      <ol id='sortable' rel="sortable" class="sortable">
+          <% for cat in Category.roots %>
+          <li id='category_<%= cat.id %>' class="mjs-nestedSortable-expanded">
+            <div>
+              <span class="disclose"><span></span></span><%= cat.name %>
+
+              <span style="float:right">
+                <% if can? :destroy , @category %>
+                  <%= link_to "<i class='glyphicon glyphicon-minus'></i>".html_safe , cat, method: :delete, data: { confirm: 'Are you sure?', remote: "true" }   %>
+                <%else%>
+                  <i class='glyphicon glyphicon-minus'></i>
+                <%end%>
+              </span>
+
+               <span id="cat_parent_edit" style="float:right" onclick="editFunction(<%=cat.id%>)") >
+                <% if can? :edit , @category%>
+                  <%= link_to "<i class='glyphicon glyphicon-pencil'></i>".html_safe , "#" ,data: { remote: "true", toggle: 'modal', target: "#category_edit" } %>
+                <%else%>
+                  <i class='glyphicon glyphicon-pencil'></i>
+                <%end%>
+              </span>
+
+              <span id="parent_create" style="float:right" onclick="createFunction()">
+              <% if can? :create , @category %>
+                <%= link_to "<i class='glyphicon glyphicon-plus'></i>".html_safe, "#", data: { remote: "true", toggle: 'modal', target: "#category_form" } %>
+              <%else%>
+                <i class='glyphicon glyphicon-plus'></i>
+              <%end%>
+              </span>
+
+            </div>
+            <%= render 'shared/children', :item => cat unless cat.leaf? %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="row" align="right">
+      <% if can? :histroy , @category %>
+        <%= link_to categories_history_path, class: 'btn btn-primary' do %>
+          <i class="glyphicon glyphicon-list"></i>Histroy of Category
+        <%end%>
+      <%end%>
+
+      <%= link_to categories_path, class: 'btn btn-primary' do %>
+        <i class="glyphicon glyphicon-list"></i>List of Category
+      <%end%>
+
+      <%= link_to albums_path, class: 'btn btn-primary' do %>
+        <i class="glyphicon glyphicon-picture"></i>Gallery
+      <%end%>
+
+    </div>
+</div>
+
+
+<!-- Modal for Create -->
+
+<div id="category_form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render 'categories/new', local: { :category => @category  }, modal: true %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal for Edit -->
+
+<div id="category_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render 'categories/edit', modal: true %>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<br><h3><U>Gallery</u></h3>
+
+<% @albums.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |photo| %>
+      <div class="col-xs-2">
+        <% @p = Photograph.where('album_id' => photo.id).first %>
+        <%= link_to (image_tag @p.img.url, :width => '100%'), album_path(photo) %>
+        <%=photo.name%>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="row" align="right">
+  <%= link_to new_album_path, class: 'btn btn-primary' do %>
+    <i class="glyphicon glyphicon-picture"></i>Create Album
+  <%end%>
+
+  <%= link_to new_photograph_path, class: 'btn btn-primary' do %>
+    <i class="glyphicon glyphicon-picture"></i>Upload Photo
+  <%end%>
+
+  <%= link_to home_index_path, class: 'btn btn-primary' do %>
+   <i class="glyphicon glyphicon-home"></i>Home
+  <%end%>
+
+</div>

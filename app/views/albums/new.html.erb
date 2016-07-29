@@ -1,0 +1,26 @@
+<br><h3>Create Album</h3>
+
+<%= form_for @album do |f| %>
+<div class="row">
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+</div>
+<% end %>
+
+<div class="row" align="right">
+
+  <%= link_to albums_path, class: 'btn btn-primary' do %>
+    <i class="glyphicon glyphicon-picture"></i>Gallery
+  <%end%>
+
+  <%= link_to home_index_path, class: 'btn btn-primary' do %>
+  <i class="glyphicon glyphicon-home"></i>Home
+  <%end%>
+</div>
+
+

@@ -1,0 +1,23 @@
+<br><h3><u>Upload a Photo</u></h3>
+
+<h5>Pick a Picture</h5>
+
+<%= form_for @photograph do |f| %>
+<div class="row">
+  <div class="field">
+    <%= f.label :Photo %><br>
+    <%= f.file_field :img %><br>
+    <%= f.label :Album_Id %><br>
+    <%= f.text_field :album_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+</div>
+<% end %>
+
+<div class="row" align="right">
+  <%= link_to home_index_path, class: 'btn btn-primary' do %>
+  <i class="glyphicon glyphicon-home"></i>Home
+  <%end%>
+</div>
