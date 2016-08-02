@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726135014) do
+ActiveRecord::Schema.define(version: 20160802134325) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20160726135014) do
   end
 
   add_index "chats", ["user_id"], name: "index_chats_on_user_id", using: :btree
+
+  create_table "like_likes", force: :cascade do |t|
+    t.string   "liker_type",    limit: 255, null: false
+    t.integer  "liker_id",      limit: 4,   null: false
+    t.string   "likeable_type", limit: 255, null: false
+    t.integer  "likeable_id",   limit: 4,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "like_likes", ["liker_type", "liker_id", "likeable_type", "likeable_id"], name: "unique_like_likes", unique: true, using: :btree
 
   create_table "photographs", force: :cascade do |t|
     t.integer  "album_id",   limit: 4

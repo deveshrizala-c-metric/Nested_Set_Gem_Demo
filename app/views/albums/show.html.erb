@@ -1,3 +1,11 @@
 <br><h3><U><%= @album.name %> Album</u></h3>
 
 <%= render :partial => 'photographs/index' %>
+
+<% if Like::Like.liking?(current_user, @album) %>
+  <%= link_to 'Unlike', like_path_for(@album), method: :delete %>
+<% else %>
+  <%= link_to 'Like', like_path_for(@album), method: :post %>
+<% end %>
+<br>
+Total Likes :- <%= Like::Like.with_likeable(@album).count %>

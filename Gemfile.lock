@@ -91,6 +91,8 @@ GEM
     json (1.8.3)
     jwt (1.5.1)
     libv8 (3.16.14.15)
+    like (0.2.1)
+      rails (>= 3.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -223,6 +225,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails (>= 1.0.12)
   jquery-turbolinks
+  like (~> 0.2.1)
   mysql2 (>= 0.3.13, < 0.5)
   omniauth
   omniauth-facebook

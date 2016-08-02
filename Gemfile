@@ -46,6 +46,8 @@ gem 'paper_trail', '~> 4.2.0'
 
 gem 'carrierwave'
 
+gem 'like', '~> 0.2.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Like::Engine => '/'
   get 'home/index'
   post "/savesort" => 'home#savesort'
   get 'categories/get_category' => "categories#get_category"
