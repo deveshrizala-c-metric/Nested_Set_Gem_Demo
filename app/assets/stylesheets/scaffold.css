@@ -53,3 +53,19 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+.controls{
+    width:50px;
+    display:block;
+    font-size:16px;
+    padding-top:8px;
+    font-weight:bold;
+}
+.next {
+    float:right;
+    text-align:right;
+}
+
+.fade .modal-dialog{
+width:40%;
+}

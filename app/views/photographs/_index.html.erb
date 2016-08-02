@@ -1,42 +1,34 @@
-<% @album.photographs.in_groups_of(3) do |group| %>
-   <div class="row">
-    <% group.compact.each do |photo| %>
-      <div class="col-xs-2 pop">
-        <%= image_tag photo.img.url, :width => '100%', :id => 'image_id' %>
+<div class="container">
+  <ul class="row">
+    <% @album.photographs.each do |photo| %>
+        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+          <%= image_tag photo.img.url, :width => '100%', :id => 'image_id' %>
+        </li>
+    <%end%>
+  </ul>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
       </div>
-    <% end %>
-  </div>
-<% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <div class="row" align="right">
 
-  <%= link_to new_photograph_path, class: 'btn btn-primary' do %>
-    <i class="glyphicon glyphicon-picture"></i>Upload Photo
-  <%end%>
+<%= link_to new_photograph_path, class: 'btn btn-primary' do %>
+  <i class="glyphicon glyphicon-picture"></i>Upload Photo
+<%end%>
 
-  <%= link_to albums_path, class: 'btn btn-primary' do %>
-    <i class="glyphicon glyphicon-picture"></i>Gallery
-  <%end%>
+<%= link_to albums_path, class: 'btn btn-primary' do %>
+  <i class="glyphicon glyphicon-picture"></i>Gallery
+<%end%>
 
-  <%= link_to home_index_path, class: 'btn btn-primary' do %>
-   <i class="glyphicon glyphicon-home"></i>Home
-  <%end%>
+<%= link_to home_index_path, class: 'btn btn-primary' do %>
+ <i class="glyphicon glyphicon-home"></i>Home
+<%end%>
 
-</div>
-
-<div id="photo_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-          <img src="" id="imagepreview" style="width: 100%; height: 100%;" >
-      </div>
-    </div>
-
-    <div class="modal-footer">
-       <%#= link_to "Previous",@photograph.prev(@photograph)%> <%#= link_to "Next", @photograph.next(@photograph) %>
-    </div>
-
-  </div>
 </div>
