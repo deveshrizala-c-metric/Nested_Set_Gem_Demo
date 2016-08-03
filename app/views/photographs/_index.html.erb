@@ -3,6 +3,12 @@
     <% @album.photographs.each do |photo| %>
         <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
           <%= image_tag photo.img.url, :width => '100%', :id => 'image_id' %>
+            <% if Like::Like.liking?(current_user, photo) %>
+              <%= link_to "<i class='glyphicon glyphicon-thumbs-down'></i> Unlike".html_safe, like_path_for(photo), :class => "like", method: :delete, data: { remote: "true" }  %>
+            <% else %>
+              <%= link_to "<i class='glyphicon glyphicon-thumbs-up'></i> Like".html_safe, like_path_for(photo), :class => "like", method: :post, data: { remote: "true" } %>
+            <% end %>
+           <%= Like::Like.with_likeable(photo).count %>
         </li>
     <%end%>
   </ul>
@@ -13,6 +19,9 @@
     <div class="modal-content">
       <div class="modal-body">
       </div>
+     <!--  <div class="modal-footer">
+        <a href=""></a>
+      </div> -->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   rolify
 
+acts_as_commontator
+
   has_many :categories
   has_many :albums, :dependent => :destroy
   # Include default devise modules. Others available are:

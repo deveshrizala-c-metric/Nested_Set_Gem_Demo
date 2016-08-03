@@ -48,6 +48,8 @@ gem 'carrierwave'
 
 gem 'like', '~> 0.2.1'
 
+gem 'commontator'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
