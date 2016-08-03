@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   rolify
 
-acts_as_commontator
+  acts_as_commontator
 
   has_many :categories
   has_many :albums, :dependent => :destroy
